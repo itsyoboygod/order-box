@@ -1,0 +1,234 @@
+:root{
+    --white: hsl(0, 0%, 100%);
+    --black: hsl(0, 0%, 0%);
+    --transparent: hsla(0, 0%, 0%, 0);
+    --transparent60: hsla(0, 0%, 0%, 0.6);
+    --title-clr:var(--black);
+    --p-clr:var(--black);
+    --lightgrey: hsl(0, 0%, 83%);
+    --grey: hsl(0, 0%, 7%);
+    --darkgrey: hsl(0, 0%, 19%);
+    --purple: hsl(300, 100%, 25%);
+}
+
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: row ;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.order-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: var(--purple);
+    width: 400px;
+    border-radius: 1rem;
+    font-family: system-ui;
+    inset: auto 0 0 auto;
+    box-shadow: 0px 10px 20px;
+    container-type: inline-size;
+}
+
+.header-img{
+    min-width: 100%;
+    margin: 0;
+    height: 200px;
+    background-image: url('./monke.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 1rem 1rem 0 0;
+    position: relative;
+}
+
+.header-img::after{
+    position: absolute;
+    content: url(./monke-removebg-preview.png);
+    transform: scaleX(-1) rotate(180deg) scale(.65);
+    mix-blend-mode: soft-light;
+    width: 0;
+    top: 60px;
+    left: 0px;
+    right: 0;
+    z-index: -1;
+    filter: blur(1px);
+}
+
+.order-box p{
+    padding: 5px;
+    margin: 5px 30px;
+    font-size: 4cqi;
+    text-align: center;
+}
+
+.order-box h1{
+    padding: 5px;
+    margin: 5px;
+    text-align: center;
+
+}
+
+.order-box img{
+    border-radius: 1rem 1rem 0 0;
+}
+
+.plan{
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    background-color: mediumpurple;
+    align-items: center;
+    width: min(95%, 380px);
+    justify-content: space-between;
+    border-radius: 50px 10px 10px 50px;
+    margin: 10px;
+    transition: .5s;
+    box-shadow: 0px 5px 10px black;
+    
+}
+
+.circle{
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    padding: 5px;
+    background-color: var(--transparent);
+    border-radius: 50%;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    outline: solid 6px var(--purple);
+    box-shadow: -10px 1px 10px black;
+}
+
+.circle span{
+    position: absolute;
+    color: var(--purple);
+    line-height: 5px;
+    font-size: 3rem;
+    top: 23px;
+    left: 10px;
+    user-select: none;
+}
+
+.price{
+    color: var(--purple);
+}
+
+.change{
+    margin: 5px;
+    padding: 5px;
+}
+
+.change button{
+    text-decoration: none;
+    margin: 5px;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px purple;
+    background-color: transparent;
+    transition: .5s;
+    
+}
+
+.change button:hover{
+    cursor: pointer;
+    box-shadow: 0px !important;
+    transition: box-shadow .5s;
+
+}
+
+.change button a{
+    text-decoration: none;
+    color: purple;
+    transition: .5s;
+    padding: 10px;
+}
+
+.pay{
+    display: flex;
+    flex-direction: column;
+    width: min(95%, 380px);
+    text-align: center;
+    margin: 10px;
+}
+
+.pay button{
+    border-radius: 10px;
+    border: none;
+    margin: 5px 0;
+    padding: 5px;
+    height: 40px;
+    font-family: system-ui;
+    font-weight: bold;
+    outline: solid 1px;
+    transition: .2s;
+}
+
+.pay button:hover{
+    cursor: pointer;
+    transition: .2s;
+    box-shadow: 0 8px 6px -6px black;
+    outline: solid 2px;
+}
+
+.pay button:first-child{
+    background-color: blue;
+    color: var(--white);
+}
+
+.pay button:last-child{
+    color: tomato;
+}
+
+#popup{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgb(0,0,0,0.75);
+    display: none;
+}
+
+#popup .popup-content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: clamp(80%,50%, 500px);
+    padding: 10px 20px;
+    background: #eee;
+}
+
+#popup a.close-popup{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 3rem;
+    line-height: 20px;
+    color: var(--black);
+}
+
+#popup a.close-popup:hover{
+    cursor: pointer;
+    transition: .5s;
+    opacity: .5;
+}
+
+#popup:target{
+    display: block;
+    z-index: 1;
+}
+
+.close-popup>*{
+    font-size: 2rem;
+}
