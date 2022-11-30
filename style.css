@@ -19,6 +19,7 @@ main{
     flex-direction: row ;
     flex-wrap: wrap;
     gap: 2rem;
+    transition: .2s;
 }
 
 .order-box{
@@ -32,6 +33,7 @@ main{
     font-family: system-ui;
     inset: auto 0 0 auto;
     box-shadow: 0px 10px 20px;
+    overflow-x: hidden;
     container-type: inline-size;
 }
 
@@ -39,16 +41,16 @@ main{
     min-width: 100%;
     margin: 0;
     height: 200px;
-    background-image: url('./monke.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 1rem 1rem 0 0;
     position: relative;
+    background-image: url('./img/monke.jpg');
 }
 
 .header-img::after{
     position: absolute;
-    content: url(./monke-removebg-preview.png);
+    content: url(./img/monke-removebg-preview.png);
     transform: scaleX(-1) rotate(180deg) scale(.65);
     mix-blend-mode: soft-light;
     width: 0;
@@ -56,7 +58,7 @@ main{
     left: 0px;
     right: 0;
     z-index: -1;
-    filter: blur(1px);
+    filter: drop-shadow(2px 4px 95px red);
 }
 
 .order-box p{
@@ -70,7 +72,15 @@ main{
     padding: 5px;
     margin: 5px;
     text-align: center;
-
+    font-family: monospace;
+    font-weight: 900;
+    /* background: linear-gradient(to right, var(--black), var(--purple)); */
+    background: var(--purple);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: #d71c1c00;
+    backdrop-filter: blur(2px);
+    filter: drop-shadow(3px 3px 2px black);
+    user-select: none;
 }
 
 .order-box img{
@@ -173,9 +183,9 @@ main{
 
 .pay button:hover{
     cursor: pointer;
-    transition: .2s;
     box-shadow: 0 8px 6px -6px black;
     outline: solid 2px;
+    transition: .2s;
 }
 
 .pay button:first-child{
@@ -183,18 +193,44 @@ main{
     color: var(--white);
 }
 
+.pay button:first-child:hover{
+    box-shadow: inset 0 0 100px black;
+    font-weight: 900;    
+    font-size: .9rem;
+    transition: .2s;
+}
+
 .pay button:last-child{
     color: tomato;
 }
 
+.pay button:last-child:hover{
+    box-shadow: inset 0 0 100px salmon;
+    font-weight: 900;
+    font-size: .9rem;
+    color: red;
+    transition: .2s;
+}
+
+
 #popup{
     position: fixed;
-    top: 0;
-    left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgb(0,0,0,0.75);
+    background: hsla(0, 0%, 0%, 0.75);
     display: none;
+    backdrop-filter: blur(3px);
+    transition: .2s;
+}
+
+input{
+    -webkit-appearance: none;
+    visibility: hidden;
+    display: none;
+}
+
+#check:checked ~ main{
+    transform: scale(1.2);
 }
 
 #popup .popup-content{
@@ -202,9 +238,11 @@ main{
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    width: clamp(80%,50%, 500px);
+    width: min(80%, 500px, 100%);
     padding: 10px 20px;
     background: #eee;
+    border-radius: 10px;
+    box-shadow: 0px 0px 250px 10px var(--purple);
 }
 
 #popup a.close-popup{
@@ -227,6 +265,7 @@ main{
 #popup:target{
     display: block;
     z-index: 1;
+    inset: auto 0 0 0;
 }
 
 .close-popup>*{
